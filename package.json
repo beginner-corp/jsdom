@@ -1,0 +1,24 @@
+{
+  "name": "@begin/jsdom",
+  "description": "A bundled version of JSDOM for Lambda Node",
+  "main": "jsdom.browserify.min.js",
+  "scripts": {
+    "b": "browserify --node --im -s 'jsdom' --no-builtins index.js > jsdom.browserify.js && terser jsdom.browserify.js -o jsdom.browserify.min.js",
+    "e": "esbuild index.js --bundle --platform=node --outfile=jsdom.esbuild.js --minify --external:canvas ",
+    "r": "rollup index.js --file jsdom.rollup.js --format cjs -p node-resolve={preferBuiltins:true} -p commonjs -p json -p replace={'canvas':'\"fs\"'}",
+    "w": ""
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.2",
+    "@rollup/plugin-replace": "^3.0.0",
+    "browserify": "^17.0.0",
+    "esbuild": "^0.12.15",
+    "jsdom": "^16.6.0",
+    "rollup": "^2.53.2",
+    "terser": "^5.7.1",
+    "webpack": "^5.45.1"
+  },
+  "version": "1.0.0"
+}
