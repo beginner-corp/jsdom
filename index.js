@@ -4,10 +4,13 @@ function factory (input) {
   return new jsdom.JSDOM(input)
 }
 
-factory.fragment = jsdom.JSDOM.fragment
+module.exports = {
+  parse: factory,
+  fragment: jsdom.fragment
+}
 
-module.exports = factory
 // usage
-// let jsdom = require('@begin/jsdom')
-// let dom = jsdom('<p>omg hi</p>')
+// let { dom, fragment } = require('@begin/jsdom')
+// let dom = parse('<p>YOLO</p>')
+// let el = fragment('<p>orphan</p>')
 // console.log(dom.window.document.querySelector("p").textContent);
