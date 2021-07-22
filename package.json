@@ -6,7 +6,8 @@
     "b": "browserify --node --im -s 'jsdom' --no-builtins index.js > jsdom.browserify.js && terser jsdom.browserify.js -o jsdom.browserify.min.js",
     "e": "esbuild index.js --bundle --platform=node --outfile=jsdom.esbuild.js --minify --external:canvas ",
     "r": "rollup index.js --file jsdom.rollup.js --format cjs -p node-resolve={preferBuiltins:true} -p commonjs -p json -p replace={'canvas':'\"fs\"'}",
-    "w": ""
+    "w": "",
+    "test": "tape ./test.js | tap-spec"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.1",
@@ -17,6 +18,8 @@
     "esbuild": "^0.12.15",
     "jsdom": "^16.6.0",
     "rollup": "^2.53.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.2.2",
     "terser": "^5.7.1",
     "webpack": "^5.45.1"
   },

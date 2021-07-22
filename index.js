@@ -1,12 +1,13 @@
-let jsdom = require("jsdom")
+const jsdom = require("jsdom")
+const { JSDOM } = jsdom
 
 function factory (input) {
-  return new jsdom.JSDOM(input)
+  return new JSDOM(input)
 }
 
 module.exports = {
   parse: factory,
-  fragment: jsdom.fragment
+  fragment: JSDOM.fragment
 }
 
 // usage
